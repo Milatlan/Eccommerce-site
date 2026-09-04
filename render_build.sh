@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 rm -rf backend s2s_backend_deploy.zip s2s_backend_deploy.b64
-cat backend_chunks/part*.txt > s2s_backend_deploy.b64
+cat \
+  backend_chunks/part01.txt \
+  backend_chunks/part02.txt \
+  backend_chunks/part03.txt \
+  backend_chunks/part04.txt \
+  backend_chunks/part05.txt \
+  > s2s_backend_deploy.b64
 base64 -d s2s_backend_deploy.b64 > s2s_backend_deploy.zip
 echo "cce8c941c703a2a4c512f88ebadb73763445970e2ef5100a1a0052a105ac026f  s2s_backend_deploy.zip" | sha256sum -c -
 mkdir -p backend
